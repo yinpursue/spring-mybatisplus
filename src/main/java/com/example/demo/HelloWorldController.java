@@ -14,16 +14,7 @@ import java.util.concurrent.locks.ReentrantLock;
 public class HelloWorldController {
 
     @GetMapping("/helloWorld")
-    public String helloWorld(){
-        Snowflake snowflake = IdUtil.getSnowflake(1, 1);
-
-        snowflake.nextId();
-        ReentrantLock lock = new ReentrantLock();
-        lock.lockInterruptibly();
-        lock.lock();
-        ExecutorService executorService = Executors.newFixedThreadPool();
-        executorService.execute();
-
+    public String helloWorld() throws InterruptedException {
         return "hello world";
     }
 }
